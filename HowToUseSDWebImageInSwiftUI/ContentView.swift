@@ -8,11 +8,23 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ContentView: View {
+struct SDWebImageLoader: View {
+    let url: String
+    var contentMode: ContentMode = .fill
+    
     var body: some View {
         WebImage(url: URL(string: "https://picsum.photos/id/237/200/300"))
             .resizable()
-            .aspectRatio(contentMode: .fit)
+            .aspectRatio(contentMode: contentMode)
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        SDWebImageLoader(
+            url: "https://picsum.photos/id/237/200/300",
+            contentMode: .fit
+        )
     }
 }
 
